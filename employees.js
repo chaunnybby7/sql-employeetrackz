@@ -25,3 +25,27 @@ connection.connect(function (err) {
 console.table (
     "\n---------------Employee Trackerz---------------\n"
 )
+
+// Ask user initial action question to see what they would like to do
+const initialAction = async () => {
+    try {
+        let answer = await inquirer.prompt({
+            name: 'action',
+            type: 'list',
+            message: 'What would you like to do today?',
+            choices: [
+                'View Employees',
+                'View Departments',
+                'View Roles',
+                'Add Employees',
+                'Add Departments',
+                'Add Roles',
+                'Update Employee Role',
+                'Exit'
+            ]
+        });
+        
+    }
+
+
+}
