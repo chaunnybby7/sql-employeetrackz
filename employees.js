@@ -103,4 +103,22 @@ const employeeView = async () => {
     };
 }
 
+// Selection to view all departments
+const departmentView = async () => {
+    console.log('Department View');
+    try {
+        let query = 'SELECT * FROM department';
+        connection.query(query, function (err, res) {
+            if (err) throw err;
+            let departmentArr = [];
+            res.forEach(department => departmentArr.push(department));
+            console.table(departmentArr);
+            initialAction();
+
+        });
+    } catch (err) {
+        console.log(err);
+        initialAction();
+    };
+}
 
