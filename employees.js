@@ -3,6 +3,7 @@ const mysql = require('mysql');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 const util = require('util');
+const { init } = require('express/lib/application');
 
 // create the connection to MySQL workbench
 let connection = mysql.createConnection({
@@ -44,8 +45,62 @@ const initialAction = async () => {
                 'Exit'
             ]
         });
-        
-    }
+        switch (answer.action) {
+            case 'View Employees':
+            employeeView();
+            break;
 
+            case 'View Departments':
+                deparmentView();
+                break;
+            
+            case 'View Roles':
+                roleView();
+                break; 
+            
+            case 'Add Employees':
+                employeeAdd();
+                break;
 
+            case 'Add Departments':
+                departmentAdd();
+                break;
+            
+            case 'Add Roles':
+                roleAdd();
+                break;
+
+            case 'Update Employee Role':
+                employeeUpdate();
+                break;
+            
+            case 'Exit':
+                connection.end();
+                break;
+        };
+
+    } catch (err) {
+        console.log(err);
+        initialAction();
+    };
 }
+
+// Selection to view all employees
+const employeeView = async () => {
+    console.log('Employee View');
+    try {
+        let query = 'SELECT * FROM employee';
+        connection.query(query, function (err,res) {
+            if (err) throw err;
+            let employeeArr = [];
+            res.forEach(employee => employeeArr.push(employee));
+            console.table(employeeArr);
+            initialAction();
+        });
+    } catch (err) {
+        console.log(err);
+        initialAction();
+    };
+}
+
+
