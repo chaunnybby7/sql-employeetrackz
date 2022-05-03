@@ -4,6 +4,7 @@ const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 const util = require('util');
 const { init } = require('express/lib/application');
+const { connect } = require('http2');
 
 // create the connection to MySQL workbench
 let connection = mysql.createConnection({
@@ -274,4 +275,49 @@ const roleAdd = async() => {
     };
 }
 
+// Selection to update a role for a specific employee.
+const employeeUpdate = async () => {
+    try {
+        console.log('Employee Update');
 
+        let employees = await connection.query("SELECT * FROM employee");
+
+        let employeeSelection = await inquirer.prompt([
+            {
+                name: 'employee',
+                type: 'list',
+                choices: employees.map((employeeName) => {
+                    return { 
+                        name: employeeName.first_name + " " + employeeName.last_name,
+                        value: employeeName.id
+                    }
+                }),
+                message: 'Please choose an employee to update.'
+            }
+        ]);
+        let roles = await connection.query("SELECT * from role");
+
+        let roleSelection = await inquirer.prompt([
+
+        {
+            name: 'role',
+            type: 'list',
+            choices: roles.map((rolenName) => {
+                return {
+                    name: rolenName.title,
+                    value: rolenName.id
+                }
+            }),
+            message: 'Please select the role to update the employee with.'
+        } 
+    ]);
+
+    let result = await connection.query("UPDATE employee SET ? WHERE ?", [{ role_id: roleSelection.role }, { id: employeeSelection.employee }]);
+    
+    console.log(`The role was successfully updated.\n`);
+
+} catch (err) {
+    console.log(err);
+    initialAction();
+};
+}
