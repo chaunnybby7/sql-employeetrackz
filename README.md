@@ -9,6 +9,15 @@
 
 A command-line application to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
+This application allows the user to:
+
+* Add departments, roles, employees
+
+* View departments, roles, employees
+
+* Update employee roles
+
+* Delete an employee
 
 ## Installation ⌨️
 
@@ -31,7 +40,6 @@ or go to <a href="https://drive.google.com/file/d/14UTy3UfPm-6iOd9Ynb77l6WHliEFO
 
 ## Deployed Link 
 
-[🦄](https://chaunnybby7.github.io/sql-employeetrackz/) ✨
 
 
 [📁 Employee Tracker Github Repo](https://github.com/chaunnybby7/sql-employeetrackz)
