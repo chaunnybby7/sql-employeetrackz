@@ -190,6 +190,7 @@ const employeeAdd = async () => {
             manager_id: (answer.employeeManagerId)
 
         });
+
         console.log(`${answer.firstName} ${answer.lastName} added successfully.\n`);
         initialAction();
     } catch (err) {
@@ -197,3 +198,30 @@ const employeeAdd = async () => {
         initialAction();
     };
 }
+
+// Selection to add new department 
+const departmentAdd = async () => {
+    try {
+        console.log('Department Add')
+    let answer = await inquirer.prompt([
+        {
+            name: 'deptName',
+            type: 'input',
+            message: 'What is the name of your new department?'
+        }
+    ]);
+
+    let result = await connection.query("INSERT INTO department SET ?", {
+        department_name: answer.deptName
+    });
+
+    console.log(`${answer.deptName} added successfully to departments.\n`)
+    initialAction();
+
+} catch (err) {
+    console.log(err);
+    initialAction();
+};
+}
+
+
