@@ -19,10 +19,11 @@ git@github.com:chaunnybby7/sql-employeetrackz.git
 ```
 2. Run `npm install` to install all dependencies. To run this application locally, run `node employees.js` in your CLI. 
 
-3. ```
-Run `mysql -u root -p` on your root folder.
-```
+3. ```Run `mysql -u root -p` on your root folder.```
+
+
 4. Source the `schema.sql` and `seeds.sql` file.
+
 
 ## Demo
 
