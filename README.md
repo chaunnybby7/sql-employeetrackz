@@ -27,6 +27,8 @@ git@github.com:chaunnybby7/sql-employeetrackz.git
 
 ## Demo
 
+or go to <a href="https://drive.google.com/file/d/14UTy3UfPm-6iOd9Ynb77l6WHliEFONAq/view">Employee Tracker</a>. 
+
 ## Deployed Link 
 
 [🦄](https://chaunnybby7.github.io/sql-employeetrackz/) ✨
