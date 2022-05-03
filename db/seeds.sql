@@ -24,3 +24,15 @@ VALUES ('Reception');
 INSERT INTO department (department_name)
 VALUES ('Human Resources');
 
+INSERT INTO role (title, salary, department_id)
+VALUES ('General Manager', 120000, 1);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Salesperson', 80000, 2);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Accountant', 100000, 3);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Business Administrative', 55000, 4);
+INSERT INTO role (title, salary, department_id)
+VALUES ('Human Resource Manager', 800000, 5);
+INSERT INTO role (title, salary, department_id)
+VALUES ('CEO', 250000, null);
